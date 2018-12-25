@@ -1,0 +1,53 @@
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	@include zmp
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+	
+html, body
+	height: 100%
+h1, h2, h3, h4, h5, h6, h7
+	@include zmp
+body
+	$map: (320: 12px, 768: 18px, 1920: 24px)
+	@include set-fluid('font-size',$map)
+	font-weight: 400 
+	min-width: 320px
+	position: relative
+	font-family: $default-font
+	overflow-x: hidden
+	
+.wrapper
+	$map: (320: 20px, 750px: 50px, 1600px: 100px)
+	@include poly-fluid-sizing('padding-left', $map)
+	@include poly-fluid-sizing('padding-right', $map)
+
+.def-title
+	font-family: "PT Mono"
+	font-weight: 700 
+	h1, h2, h3
+		$font-size: (750: 30px, 1600: 28px)
+		$line-height: (750: 44px, 1600: 44px)
+		
+		@include set-fluid('font-size', $font-size)
+		@include set-fluid('line-height', $line-height)

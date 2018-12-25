@@ -1,0 +1,82 @@
+.more_arrow
+	$size: (750: 82px, 1600: 50px)
+	$padding: (750: 30px, 1600: 17px)
+	
+	@include set-fluid('width', $size)
+	@include set-fluid('height', $size)
+	@include set-fluid('padding', $padding)
+
+	display: block
+	border: 1px $def-color solid 
+	border-radius: 50% 
+	&:before
+		$size: (750: 24px, 1600: 16px)
+		
+		@include set-fluid('width', $size)
+		@include set-fluid('height', $size)
+		
+		content: ""
+		display: block
+		background-image: url(/img/elements/arrow.svg)
+		background-size: cover 
+		background-repeat: no-repeat
+		position: relative
+		
+.slider__nav
+	$font-size: (750: 27px, 1600: 16px)
+	$line-height: (750: 46.9px, 1600: 28px)
+	
+	
+	@include set-fluid('font-size', $font-size)
+	@include set-fluid('line-height', $line-height)
+	
+	
+	font-family: $second-font
+	font-weight: 400
+	width: 100%  
+	display: inline-flex
+	align-items: center  
+	color: $def-color
+	.counter
+		$padding-hr: (750: 45px, 1600: 26.5px)
+		
+		@include set-fluid('padding-right', $padding-hr)
+		@include set-fluid('padding-left', $padding-hr)
+		
+		display: inline-flex
+		border-radius: 10px
+		background-color: rgba(255,255,255,0.1)
+		.current
+			&:after
+				content: " / " 
+				display: inline-block
+				margin: 0 4px 0 4px
+	.prev
+		$size: (750: 25px, 1600: 15px)
+		$margin-hr: (750: 71px, 1600: 46px)
+
+		@include set-fluid('width', $size)
+		@include set-fluid('height', $size)
+		@include set-fluid('margin-right', $margin-hr)
+
+		background-image: url(/img/elements/arrow.svg)
+		background-repeat: no-repeat
+		background-size: cover
+		transform: scale(-1,1)
+		cursor: pointer
+
+		
+	.next
+		$size: (750: 25px, 1600: 15px)
+		$margin-hr: (750: 71px, 1600: 46px)
+		
+		@include set-fluid('width', $size)
+		@include set-fluid('height', $size)
+		@include set-fluid('margin-left', $margin-hr)
+
+		background-image: url(/img/elements/arrow.svg)
+		background-repeat: no-repeat
+		background-size: cover
+		cursor: pointer
+
+		

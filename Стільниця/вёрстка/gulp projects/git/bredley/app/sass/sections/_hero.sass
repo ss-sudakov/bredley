@@ -1,0 +1,85 @@
+.hero
+	&__slider
+		.item
+			$padding-bottom: (750: 173px, 1600: 91px)
+			$padding-top: (750: 482px, 1600: 271px)
+
+			@include set-fluid('padding-bottom', $padding-bottom)
+			@include set-fluid('padding-top', $padding-top)
+
+			background-repeat: no-repeat  
+			background-size: cover
+			background-position: center
+			position: relative
+			
+			display: flex
+			@media(min-width: 1000px)
+				flex-direction: column
+				justify-content: end
+				height: 90vh 
+			@media(min-width: 1100px)
+				flex-direction: row
+				justify-content: center
+			&__inner
+				
+			
+	&__inner
+		position: relative
+		.slider__nav
+			$margin-bottom: (750: 60px, 1600: 91px)
+			
+			@include set-fluid('margin-bottom', $margin-bottom)
+			
+			justify-content: center 
+			@include media(xl)
+				justify-content: end 
+			position: absolute
+			bottom: 0
+			
+	&__content
+		$padding-hr: (750: 36px)
+		$padding-top: (750: 47px, 1600: 61px)
+		$padding-bottom: (750: 82px, 1600: 55px)
+		$max-width: (750: 650px, 1600: 679px)
+
+		
+		@include set-fluid('padding-right', $padding-hr)
+		@include set-fluid('padding-left', $padding-hr)
+		@include set-fluid('padding-top', $padding-top)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		@include set-fluid('max-width', $max-width)
+		
+		width: 100%
+		background: $accent
+		color: $def-color
+	.def-title
+		$padding-top: (750: 40px, 1600: 0px)
+		$padding-bottom: (750: 41px, 1600: 53px)
+		@include set-fluid('padding-top', $padding-top)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		
+		
+	&__description
+		$font-size: (750: 25px, 1600: 16px)
+		$line-height: (750: 41.67px, 1600: 30px)
+		
+		@include set-fluid('font-size', $font-size)
+		@include set-fluid('line-height', $line-height)
+		
+		
+	&__more
+		position: relative
+		$padding-top: (750: 47px, 1600: 53px)
+		@include set-fluid('padding-top', $padding-top)
+		a
+			$font-size: (750: 25px, 1600: 16px)
+			$width: (750: 207px, 1600: 128px)
+		
+			@include set-fluid('width', $width)
+			@include set-fluid('font-size', $font-size)
+
+			color: $def-color
+			text-decoration: none 
+			display: flex
+			justify-content: space-between
+			align-items: center

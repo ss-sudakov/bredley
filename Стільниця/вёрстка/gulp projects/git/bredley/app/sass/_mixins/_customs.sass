@@ -1,0 +1,16 @@
+@mixin set-gutters()
+	@include set-fluid('padding-left', $gutter-hr)
+	@include set-fluid('padding-right', $gutter-hr)
+
+@mixin set-gutter($side)
+	@if($side == r)
+		@include set-fluid('padding-right', $gutter-hr)
+	@else if($side == l)
+		@include set-fluid('padding-left', $gutter-hr)
+	@else if($side == t)
+		@include set-fluid('padding-top', $gutter-hr)
+	@else if($side == b)
+		@include set-fluid('padding-bottom', $gutter-hr)
+		
+	
+	
