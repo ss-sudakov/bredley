@@ -12,5 +12,24 @@
 	@else if($side == b)
 		@include set-fluid('padding-bottom', $gutter-hr)
 		
-	
-	
+
+@mixin title-mono ($fz)
+	color: $purple
+	font-size: $fz
+	font-weight: bold
+	font-family: $second-font
+	margin: 0
+	padding: 0
+
+@mixin title-lato ($fz, $color: $title-grey)
+	color: $color
+	font-size: $fz
+	font-weight: 400
+	font-family: $default-font
+	margin: 0
+	padding: 0
+
+@mixin no-list
+  padding: 0
+  margin: 0
+  list-style: none

@@ -1,0 +1,74 @@
+$title-grey: $btn-txt
+$default-container: 1600
+$breakpoint-medium: 760px
+$wrapper-gutter: (760: 50px, $default-container: 100px)
+
+@mixin breakpoint-landscape
+  @media screen and (min-width: $breakpoint-medium)
+    @content
+
+.bg-bordered
+  background: repeating-linear-gradient(90deg, $bg-border-color, $bg-border-color 1px, transparent 0, transparent 25%)
+
+.page-wrapper
+  $padding: $wrapper-gutter
+  @include set-fluid('padding-left', $padding)
+  @include set-fluid('padding-right', $padding)
+
+.structure
+  &-inner
+    $padding: (760: 1px, $default-container: 90px)
+    @include set-fluid('padding-left', $padding)
+    @include set-fluid('padding-right', $padding)
+
+  &-header
+    background: $purple
+    text-align: center
+    padding: 20px 0
+    margin: 20px 0
+
+    &-title
+      @include title-mono(32px)
+      color: rgba($def-color, 0.8)
+      line-height: 1.38 !important
+
+      @include breakpoint-landscape
+        color: rgba($def-color, 1)
+
+  &-body
+    display: flex
+    border-bottom: 1px solid $accent
+
+    &-column
+      width: 100%
+      display: flex
+      flex-wrap: wrap
+      flex-direction: column
+      text-align: center
+      padding-top: 20px
+
+      & + .structure-body-column
+        border-left: 1px solid $accent
+
+      &--big
+        @include breakpoint-landscape
+          width: 60%
+
+      &--small
+        @include breakpoint-landscape
+          width: 40%
+
+
+  &-title
+    @include title-mono(24px)
+    line-height: 1.2
+    margin: 15px 0
+
+  &-subtitle
+    @include title-lato(18px)
+    margin: 0 0 15px
+
+  &-item
+
+    &-list
+      @include no-list
