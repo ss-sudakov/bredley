@@ -1,0 +1,95 @@
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	@include zmp
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+	
+html, body
+	height: 100%
+h1, h2, h3, h4, h5, h6, h7
+	@include zmp
+body
+	$map: (320: 12px, 768: 18px, 1920: 24px)
+	@include set-fluid('font-size',$map)
+	font-weight: 400 
+	min-width: 320px
+	position: relative
+	font-family: $default-font
+	overflow-x: hidden
+
+p
+	$font-size: (750: 25px, 1600: 16px)
+	$line-height: (750: 41.67px, 1600: 28px)
+	
+	@include set-fluid('font-size',$font-size)
+	@include set-fluid('line-height',$line-height)
+	
+	color: $text
+
+.display-desk
+	display: none
+	@include media(xl)
+		display: inline
+		
+.display-mobile
+	display: block
+	@include media(xl)
+		display: none
+.desktop-br
+	display: none
+	@include media(xl)
+		display: block
+	
+.wrapper-hero
+	$map: (320: 20px, 750px: 50px, 1600px: 100px)
+	@include poly-fluid-sizing('padding-left', $map)
+	@include poly-fluid-sizing('padding-right', $map)
+
+.wrapper
+	$padding-left: (320: 20px, 750px: 50px, 1600px: 184px)
+	$padding-right: (320: 20px, 750px: 50px, 1600px: 218px)
+	
+	@include poly-fluid-sizing('padding-left', $padding-left)
+	@include poly-fluid-sizing('padding-right', $padding-right)
+
+.def-title
+	font-family: "PT Mono"
+	font-weight: 700 
+	color: $title
+	h1, h2, h3
+		$font-size: (750: 30px, 1600: 20px)
+		$line-height: (750: 44px, 1600: 28px)
+		
+		@include set-fluid('font-size', $font-size)
+		@include set-fluid('line-height', $line-height)
+		
+	&--big
+		h1, h2, h3
+			$font-size: (750: 33px, 1600: 32px)
+			$line-height: (750: 45px, 1600: 44px)
+			
+			@include set-fluid('font-size', $font-size)
+			@include set-fluid('line-height', $line-height)
+	
+	&--uppercase
+		text-transform: uppercase

@@ -1,0 +1,49 @@
+.numbers
+	&__inner
+		$padding-top: (750: 155px, 1600: 93px)
+		$padding-bottom: (750: -22px, 1600: 87px)
+	
+		@include set-fluid('padding-top', $padding-top)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		
+		color: $def-color
+		background-repeat: no-repeat
+		background-size: cover
+		background-position: center 
+	&__list
+		display: flex 
+		justify-content: space-between
+		flex-wrap: wrap 
+		width: 100% 
+		@include media(xl)
+			flex-wrap: nowrap
+		.list__item
+			$padding-bottom: (750: 176px)
+			
+			@include set-fluid('padding-bottom', $padding-bottom)
+			
+			flex: 0 50%
+			width: 100% 
+			@include media(xl)
+				flex: 0
+				flex-basis: 15%
+				padding-bottom: 0 
+			.item__number
+				$font-size: (750: 85px, 1600: 34px)
+				$line-height: (750: 89.66px, 1600: 36px)
+				$padding-bottom: (750: 61px, 1600: 16px)
+				
+				@include set-fluid('font-size',$font-size)
+				@include set-fluid('line-height',$line-height)
+				@include set-fluid('padding-bottom', $padding-bottom)
+				
+				font-family: $second-font
+				font-weight: 700 
+			.item__title	
+				$font-size: (750: 25px, 1600: 14px)
+				$line-height: (750: 41.67px, 1600: 25.66px)
+				
+				@include set-fluid('font-size',$font-size)
+				@include set-fluid('line-height',$line-height)
+
+				

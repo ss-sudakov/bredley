@@ -13,13 +13,10 @@
 			position: relative
 			
 			display: flex
-			@media(min-width: 1000px)
-				flex-direction: column
-				justify-content: end
-				height: 90vh 
-			@media(min-width: 1100px)
-				flex-direction: row
-				justify-content: center
+			
+			flex-direction: column
+			justify-content: end
+			height: 90vh 
 			&__inner
 				
 			
@@ -55,8 +52,11 @@
 	.def-title
 		$padding-top: (750: 40px, 1600: 0px)
 		$padding-bottom: (750: 41px, 1600: 53px)
+		
 		@include set-fluid('padding-top', $padding-top)
 		@include set-fluid('padding-bottom', $padding-bottom)
+		
+		color: $def-color
 		
 		
 	&__description
