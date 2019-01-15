@@ -23,6 +23,10 @@
 *:-ms-input-placeholder
 	color: #666
 	opacity: 1
+*:focus 
+	outline: none
+*:-moz-focus-inner
+	border: 0
 	
 html, body
 	height: 100%
@@ -38,18 +42,57 @@ body
 	overflow-x: hidden
 
 p
-	$font-size: (750: 25px, 1600: 16px)
-	$line-height: (750: 41.67px, 1600: 28px)
+	$font-size: (750: 25px, 1000: 14px, 1600: 16px)
+	$line-height: (750: 41.67px, 1000: 24px, 1600: 28px)
 	
 	@include set-fluid('font-size',$font-size)
 	@include set-fluid('line-height',$line-height)
 	
 	color: $text
 
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+textarea
+	$font-size: (750: 25px, 1000: 14px, 1600: 14px)
+	$padding-top: (750: 31px, 1000: 10px, 1600: 10px)
+	$padding-left: (1600: 19px)
+	$min-width: (1600: 230px)
+	$height: (750: 80px, 1000: 40px, 1600: 40px)
+	
+	@include set-fluid('padding-top', $padding-top)
+	@include set-fluid('padding-left', $padding-left)
+	@include set-fluid('padding-right', $padding-left)
+	@include set-fluid('font-size',$font-size)
+	@include set-fluid('min-width', $min-width)
+	@include set-fluid('height', $height)
+	
+	width: 100%
+	color: $title
+	background-color: $def-color
+	border-radius: 5px
+	border: 1px solid #808080
+	line-height: 1
+	&::placeholder
+		color: $placeholder
+		text-align: center
+		@include media(xl)
+			text-align: left
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+	$padding-bottom: (750: 31px, 1000: 15px, 1600: 15px)
+	
+	@include set-fluid('padding-bottom', $padding-bottom)
+	
+	width: 100% 
+
 .display-desk
 	display: none
 	@include media(xl)
-		display: inline
+		display: block
 		
 .display-mobile
 	display: block
@@ -60,33 +103,40 @@ p
 	@include media(xl)
 		display: block
 	
-.wrapper-hero
-	$map: (320: 20px, 750px: 50px, 1600px: 100px)
+.wrapper-hero, .wrapper-footer
+	$map: (320: 20px, 750px: 50px, 1000px: 70px, 1600px: 100px)
 	@include poly-fluid-sizing('padding-left', $map)
 	@include poly-fluid-sizing('padding-right', $map)
 
 .wrapper
-	$padding-left: (320: 20px, 750px: 50px, 1600px: 184px)
-	$padding-right: (320: 20px, 750px: 50px, 1600px: 218px)
+	$padding-left: (320: 20px, 750px: 50px, 1000px: 84px, 1600px: 184px)
+	$padding-right: (320: 20px, 750px: 50px, 1000px: 118px, 1600px: 218px)
 	
 	@include poly-fluid-sizing('padding-left', $padding-left)
 	@include poly-fluid-sizing('padding-right', $padding-right)
+	position: relative
 
 .def-title
 	font-family: "PT Mono"
 	font-weight: 700 
 	color: $title
 	h1, h2, h3
-		$font-size: (750: 30px, 1600: 20px)
-		$line-height: (750: 44px, 1600: 28px)
+		$font-size: (750: 30px, 1000: 15px, 1600: 20px)
+		$line-height: (750: 44px, 1000: 23px, 1600: 28px)
 		
 		@include set-fluid('font-size', $font-size)
 		@include set-fluid('line-height', $line-height)
 		
+		letter-spacing: 1px
+		@include media(sm)
+			letter-spacing: -1px
+			
+			
+		
 	&--big
 		h1, h2, h3
-			$font-size: (750: 33px, 1600: 32px)
-			$line-height: (750: 45px, 1600: 44px)
+			$font-size: (750: 33px, 1000: 25px, 1600: 30px)
+			$line-height: (750: 45px, 1000: 37px, 1600: 42px)
 			
 			@include set-fluid('font-size', $font-size)
 			@include set-fluid('line-height', $line-height)

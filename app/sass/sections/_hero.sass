@@ -1,47 +1,69 @@
 .hero
-	&__slider
-		.item
-			$padding-bottom: (750: 173px, 1600: 91px)
-			$padding-top: (750: 482px, 1600: 271px)
-
-			@include set-fluid('padding-bottom', $padding-bottom)
-			@include set-fluid('padding-top', $padding-top)
-
-			background-repeat: no-repeat  
-			background-size: cover
-			background-position: center
-			position: relative
-			
-			display: flex
-			
-			flex-direction: column
-			justify-content: end
-			height: 90vh 
-			&__inner
-				
-			
 	&__inner
 		position: relative
 		.slider__nav
-			$margin-bottom: (750: 60px, 1600: 91px)
+			$margin-bottom: (750: 60px, 1000: 91px, 1600: 91px)
 			
 			@include set-fluid('margin-bottom', $margin-bottom)
 			
 			justify-content: center 
 			@include media(xl)
-				justify-content: end 
+				justify-content: flex-end 
 			position: absolute
 			bottom: 0
+			transition: transform .3s 
+			@include media(m)
+				transform: translateY(130%)
+			@include media(xl)
+				$padding-right: (750: 60px, 1000: 96px, 1600: 96px)
+				@include set-fluid('padding-right', $padding-right)
+			@include media(xxl)
+				transform: translateY(0%)
+			.current
+				&:after
+					content: " / " 
+					display: inline-block
+					margin: 0 13px 0 15px
+					@include media(xl)
+						margin: 0 7px 0 7px
+			.counter
+				$padding-hr: (750: 55px, 1000: 26.5px, 1600: 26.5px)
+				$padding-vr: (750: 7px, 1000: 0px, 1600: 0px)
+				
+				@include set-fluid('padding-right', $padding-hr)
+				@include set-fluid('padding-left', $padding-hr)
+				
+				@include set-fluid('padding-top', $padding-vr)
+				@include set-fluid('padding-bottom', $padding-vr)
+				
+	&__slider
+		.item
+			background-repeat: no-repeat  
+			background-size: cover
+			background-position: center
+			position: relative
+			display: flex
+			flex-direction: column
+			justify-content: flex-end
+			align-items: center 
+			@include media(xl)
+				align-items: normal
+			height: 100vh 
 			
 	&__content
-		$padding-hr: (750: 36px)
-		$padding-top: (750: 47px, 1600: 61px)
-		$padding-bottom: (750: 82px, 1600: 55px)
-		$max-width: (750: 650px, 1600: 679px)
+		$margin-bottom: (750: 173px, 1000: 91px, 1600: 91px)
+		$margin-top: (750: 482px, 1000: 271px, 1600: 271px)
 
+		@include set-fluid('margin-bottom', $margin-bottom)
 		
-		@include set-fluid('padding-right', $padding-hr)
-		@include set-fluid('padding-left', $padding-hr)
+		$padding-left: (750: 38px, 1000: 42px, 1600: 42px)
+		$padding-right: (750: 20px, 1000: 84px, 1600: 74px)
+		$padding-top: (750: 37px, 1000: 61px, 1600: 61px)
+		$padding-bottom: (750: 50px, 1000: 61px, 1600: 61px)
+		$max-width: (750: 650px, 1000: 679px, 1600: 679px)
+		
+		@include set-fluid('padding-right', $padding-right)
+		@include set-fluid('padding-left', $padding-left)
 		@include set-fluid('padding-top', $padding-top)
 		@include set-fluid('padding-bottom', $padding-bottom)
 		@include set-fluid('max-width', $max-width)
@@ -50,29 +72,34 @@
 		background: $accent
 		color: $def-color
 	.def-title
-		$padding-top: (750: 40px, 1600: 0px)
-		$padding-bottom: (750: 41px, 1600: 53px)
+		$padding-top: (750: 40px, 1000: 0px, 1600: 0px)
 		
 		@include set-fluid('padding-top', $padding-top)
-		@include set-fluid('padding-bottom', $padding-bottom)
-		
+
 		color: $def-color
-		
+		h1,h2,h3
+			letter-spacing: -1px
+			@include media(xl)
+				letter-spacing: 0.1px
 		
 	&__description
-		$font-size: (750: 25px, 1600: 16px)
-		$line-height: (750: 41.67px, 1600: 30px)
+		$font-size: (750: 25px, 1000: 16px, 1600: 16px)
+		$line-height: (750: 41.67px, 1000: 30px, 1600: 30px)
+		$padding-top: (750: 28px, 1000: 18px, 1600: 18px)
 		
 		@include set-fluid('font-size', $font-size)
 		@include set-fluid('line-height', $line-height)
-		
+		@include set-fluid('padding-top', $padding-top)
+		&--padding
+			$padding-top: (750: 28px, 1000: 45px, 1600: 45px)
+			@include set-fluid('padding-top', $padding-top)
 		
 	&__more
 		position: relative
-		$padding-top: (750: 47px, 1600: 53px)
+		$padding-top: (750: 47px, 1000: 45px, 1600: 45px)
 		@include set-fluid('padding-top', $padding-top)
 		a
-			$font-size: (750: 25px, 1600: 16px)
+			$font-size: (750: 25px, 1000: 16px, 1600: 16px)
 			$width: (750: 207px, 1600: 128px)
 		
 			@include set-fluid('width', $width)
@@ -83,3 +110,5 @@
 			display: flex
 			justify-content: space-between
 			align-items: center
+		.more_arrow
+			@extend %more_arrow_hover_invert

@@ -1,28 +1,33 @@
+.header.nav-up
+	transform: translateY(-100%)
 .header
 
 	@include position(fixed, 0 0 null 0)
 	
 	background: $def-color
-	z-index: 2
+	z-index: 4
+	box-shadow: 0 4px 8px 1px rgba(33, 33, 31, 0.04)
+	transform: translateY(0)
+	transition: transform 0.5s ease-in-out
 
 	&__inner
 
 	&__top
-		$map: (750: 134px, 1600: 116px)
+		$height: (750: 134px, 1000: 116px, 1600: 116px)
 
-		@include set-fluid('height', $map)
+		@include set-fluid('height', $height)
 		
 		display: flex
 		align-items: center
-		justify-content: space-between
+		justify-content: space-between 
 		position: relative
 		
 	&__burger
-
-		$map: (320: 24px, 750: 36px)
-		$map2: (750: 26px)
-		@include set-fluid('width', $map)
-		@include set-fluid('height', $map2)
+	
+		$width: (320: 24px, 750: 36px)
+		$height: (750: 26px)
+		@include set-fluid('width', $width)
+		@include set-fluid('height', $height)
 
 		display: flex 
 		flex-direction: column 
@@ -32,19 +37,21 @@
 		text-align: center
 		
 		span
-			$map: (320: 4px, 750: 8px)
+			$padding-bottom: (320: 4px, 750: 8px)
 			display: inline-block
 			width: 100% 
 			border-top: 2px solid $accent
 			@include media(sm) 
 				border-top: 3px solid $accent
-			@include set-fluid('padding-bottom', $map)
-			transition: transform .4s ease-out, opacity .1s
+			@include set-fluid('padding-bottom', $padding-bottom)
+			// transition: transform .4s ease-in-out, opacity .1s
+		@include media(xl)
+			display: none
 		&.close
-			$map: (750: 36px)
-			$map2: (750: 36px)
-			@include set-fluid('width', $map)
-			@include set-fluid('height', $map2)
+			$width: (750: 36px)
+			$height: (750: 36px)
+			@include set-fluid('width', $width)
+			@include set-fluid('height', $height)
 			transform: translateY(40%) translateX(15%)
 			span
 				opacity: 0
@@ -71,74 +78,135 @@
 				
 
 	&__menu
+		z-index: -1
 		background-color: $def-color
-		display: flex
-		flex-direction: column 
-		align-items: center
+		display: block
+		text-align: center
 		box-shadow: 0 4px 8px 1px rgba(33, 33, 31, 0.04)
 		transform: translateY(-100%)
-		will-change: transform
-		transition: transform .3s ease-in-out
+		transition: transform .5s cubic-bezier(.07,.91,.63,.92)
 		
 		@include position(absolute, 0 0 null 0)
 		
-		opacity: 0
+		
 		pointer-events: none
 		
-		$map: (750: 134px, 1600: 116px)
-		@include set-fluid('margin-top', $map)
+		$margin-top: (750: 134px, 1000: 116px, 1600: 116px)
+		@include set-fluid('margin-top', $margin-top)
+		&.active
+			transition: transform .5s cubic-bezier(.07,.91,.63,.92)
+			transform: translateY(0)
+			pointer-events: auto
+			@include media(xl)
+				display: none
+
 		ul
 			overflow-y: auto 
-			$map: (750: 126px)
+			$padding: (750: 126px)
 			
 			@include zmp
 			
 			position: relative
 			list-style-type: none
+			text-align: center
 			
-			@include set-fluid('padding-top', $map)
-			@include set-fluid('padding-bottom', $map)
-			
+			@include set-fluid('padding-top', $padding)
+			@include set-fluid('padding-bottom', $padding)
+
 			li
-				$map: (750: 50px)
-				@include set-fluid('padding-bottom', $map)
+				$padding-bottom: (750: 50px)
+				@include set-fluid('padding-bottom', $padding-bottom)
 				
 				a
-					$map: (750: 50px)
+					$font-size: (750: 50px, 1000: 16px, 1600: 16px)
 					
-					@include set-fluid('font-size', $map)
+					@include set-fluid('font-size', $font-size)
 
 					font-family: $second-font
 					text-decoration: none
 					color: $menu-dis
+					transition:  color .3s ease-in-out
 				&.active
 					a
 						color: $accent
-		&.active
-			transform: translateY(0)
-			opacity: 1
-			pointer-events: auto
+				&:hover
+					a
+						color: $accent		
 
-	&__logo
-		$map: (750: 240px, 1600: 151px)
 				
-		@include set-fluid('width', $map)
+		
+		&--desktop
+			display: none
+			@include media(xl)
+				$padding-left: (1600: 60px)
+				@include set-fluid('padding-left', $padding-left)
+				
+				transform: none
+				display: inline-block
+				opacity: 1
+				box-shadow: none
+				position: relative
+				margin: 0
+				pointer-events: auto
+				z-index: 1 
+				
+				ul
+					overflow-y: unset
+					padding: 0 
+					$padding-right: (1600: 75px)
+					@include set-fluid('padding-right', $padding-right)
+					li
+						padding: 0
+						display: inline-block
+						a
+							padding: 10px 0 10px 0
+							$padding-left: (1600: 65px)
+							@include set-fluid('padding-left', $padding-left)
+							
+
+				
+	&__logo
+		$width: (750: 240px, 1000: 151px, 1600: 151px)
+				
+		@include set-fluid('width', $width)
 		img
 			@include respimg
 			
 	&__i18l
+		@include media(xl)
+			margin-left: auto
 		ul
 			@include zmp
 			list-style-type: none
 			li
+				$padding-right: (1600: 25px)
+				
+				@include set-fluid('padding-right', $padding-right)
+				
+				display: inline-block
+				&:last-child
+					padding-right: 0
 				a
-					$map: (750: 25px, 1600: 16px)
+					$font-size: (750: 25px, 1000: 16px, 1600: 16px)
 					
-					@include set-fluid('font-size', $map)
+					@include set-fluid('font-size', $font-size)
 
 					font-family: $second-font
 					text-decoration: none
-					color: $accent
+					color: $menu-dis
+					transition:  color .3s ease-in-out
+				&:not(.active)
+					display: block
+					@include media(xl)
+						display: inline-block
 				&.active
 					display: none
+					@include media(xl)
+						display: inline-block
+					a
+						color: $accent
+				&:hover
+					a
+						color: $accent
+					
 					

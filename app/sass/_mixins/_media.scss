@@ -7,7 +7,11 @@
 
 $breakpoints: (
   sm: 480px,
-  xl: 800px
+  m: 800px,
+  xl: 1000px,
+  xxl: 1200px,
+  xxxl: 1400px,
+  xxxxl: 1600px,
 ) !default;
 
 /* 

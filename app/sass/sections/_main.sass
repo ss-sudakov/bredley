@@ -1,3 +1,5 @@
 .main
-	$map: (750: 134px, 1600: 116px)
-	@include set-fluid('margin-top', $map)
+	$margin-top: (750: 134px, 1000: 116px, 1600: 116px)
+	@include set-fluid('margin-top', $margin-top)
+.no-margin
+	margin-top: 0

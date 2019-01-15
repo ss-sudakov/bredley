@@ -1,80 +1,114 @@
 .about
 	&__inner
 
-	$padding-top: (750: 103px, 1600: 159px)
+	$padding-top: (750: 73px, 1000: 59px, 1600: 122px)
 	
 	@include set-fluid('padding-top', $padding-top)
 	
 	p
-		$padding-top: (750: 54px, 1600: 51px)
-		$padding-bottom: (750: 114px, 1600: 121px)
+		$padding-top: (750: 54px, 1000: 31px, 1600: 41px)
+		$padding-bottom: (750: 114px, 1000: 80px, 1600: 121px)
 	
 		@include set-fluid('padding-top', $padding-top)
 		@include set-fluid('padding-bottom', $padding-bottom)
 
 	&__top
+		$padding-bottom: (750: 70px, 1000: 10px, 1600: 20px)
+	
+		@include set-fluid('padding-bottom', $padding-bottom)
 		@include media(xl)
-			display: flex
-			justify-content: space-between 
-			align-items: flex-end
-			
-			
-
+			display: flex 
+			flex-wrap: wrap 
+			-webkit-justify-content: center
+			justify-content: center
+		@include media(xxl)
+			flex-wrap: nowrap 
+		
 	&__left
+		$margin-top: (1000: 37px, 1600: 30px)
+		
+		@include set-fluid('margin-top', $margin-top)
+
 		p
-			$padding-bottom: (750: 88px)
+			$padding-bottom: (750: 88px, 1000: 70px, 1600: 137px)
 			
 			@include set-fluid('padding-bottom', $padding-bottom)
-			
-		@include media(xl)
-
 	
 	&__right
 		position: relative
+		$margin-right: (1000: 10px, 1600: 45px)
+		@include set-fluid('margin-right', $margin-right)
 		
 		@include media(xl)
-			$margin-left: (1600: 280px)
-			@include set-fluid('margin-left', $margin-left)
-		
-		&-bg			
+
+		&-bg	
+			$padding-top: (750: 315px, 1000: 315px, 1600: 315px)
+			
+			@include set-fluid('padding-top', $padding-top)
+			
 			background-repeat: no-repeat 
 			background-size: cover
-			padding-top: 315px
 			width: 100%
 			@include media(xl)
-				$width: (1600: 467px)
+				$width: (1000: 567px, 1200: 367px, 1600: 467px)
+				$margin-left: (1000: 10px, 1600: 169px)
+
 				@include set-fluid('width', $width)
+				@include set-fluid('margin-left', $margin-left)
 				
+				background-size: contain
+				margin-bottom: 80px 
+			@include media(xxl)
+				margin-bottom: 0
 			
 	&__mission
 		z-index: 3
-		$padding-top: (750: 59px, 1600: 41px)
-		$padding-right: (750: 65px, 1600: 60px)
-		$padding-bottom: (750: 46px, 1600: 34px)
-		$padding-left: (750: 75px, 1600: 46px)
+		$padding-top: (750: 59px, 1000: 30px, 1600: 38px)
+		$padding-right: (750: 65px, 1000: 55px, 1600: 60px)
+		$padding-bottom: (750: 46px, 1000: 29px, 1600: 34px)
+		$padding-left: (750: 75px, 1000: 41px, 1600: 46px)
 		
 		
 		@include set-fluid('padding-top', $padding-top)
 		@include set-fluid('padding-right', $padding-right)
 		@include set-fluid('padding-bottom', $padding-bottom)
 		@include set-fluid('padding-left', $padding-left)
-
 		background-color: $accent 
+		width: 100%
+		
+		@include media(xl)
+			$width: (1000: 450px, 1200: 350px, 1600: 350px)
+			
+			@include set-fluid('max-width', $width)
+			
+			position: absolute
+			right: -7.4%
+			top: 24%
 		
 		.def-title
 			color: $def-color
 			
+			h1,h2,h3
+				$font-size: (750: 33px, 1000: 16px, 1600: 16px)
+				
+				@include set-fluid('font-size',$font-size)
+				
+				line-height: 1
+			
 		&-after
 			p
-				$padding-top: (750: 92px)
-				$padding-bottom: (750: 87px)
+				$margin-top: (750: 28px)
+				$padding-bottom: (750: 0px, 1000: 20px)
+				$font-size: (750: 29px, 1000: 20px)
 				
-				@include set-fluid('padding-top', $padding-top)
+				@include set-fluid('font-size',$font-size)
+				@include set-fluid('margin-top', $margin-top)
 				@include set-fluid('padding-bottom', $padding-bottom)
+
 		p
-			$padding-top: (750: 38px, 1600: 25px)
-			$font-size: (750: 25px, 1600: 12px)
-			$line-height: (750: 41.67px, 1600: 22px)
+			$padding-top: (750: 28px, 1000: 18px, 1600: 18px)
+			$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+			$line-height: (750: 41.67px, 1000: 22px, 1600: 22px)
 				
 			@include set-fluid('font-size',$font-size)
 			@include set-fluid('line-height',$line-height)
@@ -82,6 +116,7 @@
 			
 			color: $def-color
 			padding-bottom: 0
+			line-height: 1
 		@include media(xl)
 			$min-width: (1600: 350px)
 			@include set-fluid('min-width',$min-width)
@@ -90,27 +125,43 @@
 	&__bottom
 		@include media(xl)
 			display: flex
-			justify-content: space-between 
+			flex-wrap: wrap
+		@include media(xl)
+			justify-content: space-between
+
 		.text-item
 			width: 100% 
 			@include media(xl)
-				$max-width: (1600: 353px)
+				$max-width: (1000: 333px, 1600: 353px)
 
 				@include set-fluid('max-width', $max-width)
+				margin-right: 10px 
 
 			&:nth-child(2n-1)
 				@include media(xl)
-					$max-width: (1600: 308px)
+					$max-width: (1000: 288px, 1600: 308px)
 					
 					@include set-fluid('max-width', $max-width)
 			&:nth-child(3n)
 				@include media(xl)
-					$max-width: (1600: 254px)
+					$max-width: (1000: 224px, 1600: 254px)
 					
 					@include set-fluid('max-width', $max-width)
+					
+					margin-right: 0
+			.def-title
+				
+				margin-bottom: -15px 
+				h1,h2,h3,h4
+					letter-spacing: 1px 
+					@include media(xl) 
+						letter-spacing: -1px 
+						
 			p
-				$font-size: (750: 25px, 1600: 12px)
-				$line-height: (750: 41.67px, 1600: 22px)
+				@include media-max(m)
+					margin-bottom: -15px 
+				$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+				$line-height: (750: 41.67px, 1000: 22px, 1600: 22px)
 				
 				@include set-fluid('font-size',$font-size)
 				@include set-fluid('line-height',$line-height)
@@ -118,23 +169,22 @@
 
 
 	&__more-arrow
-		$padding-top: (750: 44px, 1600: 35px)
+		$padding-top: (750: 34px, 1000: 31px, 1600: 31px)
 		
 		@include set-fluid('padding-top', $padding-top)
 
 		width: 25%
 		position: relative
+		
 		a
-			display: block
 			.more_arrow
-				$size: (750: 24px, 1600: 15px)
+				$size: (750: 24px, 1000: 15px, 1600: 15px)
 				
 				@include set-fluid('width', $size)
 				@include set-fluid('height', $size)
 				
 				border: 0
 				padding: 0
-			
 			
 
 			

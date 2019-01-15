@@ -1,7 +1,7 @@
 .numbers
 	&__inner
-		$padding-top: (750: 155px, 1600: 93px)
-		$padding-bottom: (750: -22px, 1600: 87px)
+		$padding-top: (750: 145px, 1000: 93px, 1600: 93px)
+		$padding-bottom: (750: -22px, 1000: 87px, 1600: 87px)
 	
 		@include set-fluid('padding-top', $padding-top)
 		@include set-fluid('padding-bottom', $padding-bottom)
@@ -15,33 +15,36 @@
 		justify-content: space-between
 		flex-wrap: wrap 
 		width: 100% 
-		@include media(xl)
+		@include media(xxl)
 			flex-wrap: nowrap
 		.list__item
-			$padding-bottom: (750: 176px)
+			$padding-bottom: (750: 156px, 1000: 100px)
 			
 			@include set-fluid('padding-bottom', $padding-bottom)
 			
 			flex: 0 50%
 			width: 100% 
 			@include media(xl)
+				$padding-left: (1000: 37px, 1600: 57px)
+				@include set-fluid('padding-left', $padding-left)
+			@include media(xxl)
 				flex: 0
-				flex-basis: 15%
-				padding-bottom: 0 
+				flex-basis: 20%
+				padding-bottom: 0px
 			.item__number
-				$font-size: (750: 85px, 1600: 34px)
-				$line-height: (750: 89.66px, 1600: 36px)
-				$padding-bottom: (750: 61px, 1600: 16px)
+				$font-size: (750: 85px, 1000: 44px, 1600: 34px)
+				$line-height: (750: 89.66px, 1000: 46px, 1600: 36px)
+				$padding-bottom: (750: 45px, 1000: 16px, 1600: 16px)
 				
-				@include set-fluid('font-size',$font-size)
-				@include set-fluid('line-height',$line-height)
+				@include set-fluid('font-size', $font-size)
+				@include set-fluid('line-height', $line-height)
 				@include set-fluid('padding-bottom', $padding-bottom)
 				
 				font-family: $second-font
 				font-weight: 700 
 			.item__title	
-				$font-size: (750: 25px, 1600: 14px)
-				$line-height: (750: 41.67px, 1600: 25.66px)
+				$font-size: (750: 25px, 1000: 24px, 1600: 14px)
+				$line-height: (750: 41.67px, 1000: 35.66px, 1600: 25.66px)
 				
 				@include set-fluid('font-size',$font-size)
 				@include set-fluid('line-height',$line-height)

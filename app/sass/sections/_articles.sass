@@ -1,1 +1,131 @@
 .articles
+	&__inner
+		$padding-top: (750: 85px, 1000: 79px, 1600: 99px)
+		$padding-bottom: (750: 0px, 1000: 47px, 1600: 67px)
+	
+		@include set-fluid('padding-top', $padding-top)
+		@include set-fluid('padding-bottom', $padding-bottom)
+	&__top
+		$padding-bottom: (750: 92px, 1000: 72px, 1600: 92px)
+		
+		@include set-fluid('padding-bottom', $padding-bottom)
+
+		display: flex
+		.def-title
+			$padding-right: (1000: 49px, 1600: 63px)
+			
+			@include set-fluid('padding-right', $padding-right)
+			h1, h2, h3
+				$font-size: (750: 33px, 1000: 23px, 1600: 28px)
+				$line-height: (750: 36px, 1000: 29px, 1600: 36px)
+				
+				@include set-fluid('font-size',$font-size)
+				@include set-fluid('line-height',$line-height)
+			
+	&__btn-all
+		display: none
+		@include media(xl)
+			display: block
+		&--mobile
+			$padding-bottom: (750: 83px)
+		
+			@include set-fluid('padding-bottom', $padding-bottom)
+			
+			display: flex
+			justify-content: center 
+			@include media(xl)
+				display: none
+				
+			
+	&__list
+		$margin-left: (750: 0px, 1000: -35px, 1600: -110px, 1920: -110px)
+		
+		@include set-fluid('margin-left', $margin-left)
+		
+		display: flex
+		flex-wrap: wrap
+		
+	&__item
+		$padding-bottom: (750: 132px, 1000: 47px, 1600: 60px)
+
+		@include set-fluid('padding-bottom', $padding-bottom)
+		
+		
+		width: 100% 
+		position: relative
+
+		overflow: hidden
+		
+		@include media(xl)
+			$max-width: (1000: 240px, 1600: 325px)
+			$margin-left: (750: 0px, 1000: 35px, 1600: 110px, 1920: 110px)
+		
+			@include set-fluid('margin-left', $margin-left)
+			@include set-fluid('max-width', $max-width)
+			
+		
+	&__thumbnail
+		$padding-bottom: (750: 60px, 1000: 23px, 1600: 23px)
+
+		@include set-fluid('padding-bottom', $padding-bottom)
+
+		width: 100% 
+		img
+			@include respimg 
+			transition:  transform 1s
+		img:hover
+			transform: scale(1.15)
+			
+	&__date
+		$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+		$line-height: (750: 32.66px, 1000: 32.66px, 1600: 32.66px)
+		$padding-bottom: (750: 31px, 1000: 15px, 1600: 8px)
+
+		@include set-fluid('padding-bottom', $padding-bottom)
+		@include set-fluid('font-size',$font-size)
+		@include set-fluid('line-height',$line-height)
+		
+		color: $date-time
+		
+	&__title
+		$font-size: (750: 33px, 1000: 16px, 1600: 16px)
+		$line-height: (750: 41.47px, 1000: 26px, 1600: 26px)
+		$padding-bottom: (750: 58px, 1000: 30px, 1600: 25px)
+		
+		
+		@include set-fluid('font-size',$font-size)
+		@include set-fluid('line-height',$line-height)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		
+		color: $title
+		font-family: $second-font
+		font-weight: 700
+		a
+			$font-size: (750: 33px, 1000: 16px, 1600: 16px)
+			$line-height: (750: 41.47px, 1000: 26px, 1600: 26px)
+			
+			
+			@include set-fluid('font-size',$font-size)
+			@include set-fluid('line-height',$line-height)
+			color: $title
+			text-decoration: none
+			letter-spacing: -1px 
+			transition: ease-in-out .3s
+			border-bottom: 1px solid transparent
+			&:hover
+				border-bottom: 1px solid $title
+			@include media(xl)
+				letter-spacing: -1.5px
+			
+	&__excerpt
+		$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+		$line-height: (750: 41.47px, 1000: 22px, 1600: 22px)
+		
+		@include set-fluid('font-size',$font-size)
+		@include set-fluid('line-height',$line-height)
+		p
+			$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+			$line-height: (750: 41.47px, 1000: 22px, 1600: 22px)
+			
+			@include set-fluid('font-size',$font-size)
+			@include set-fluid('line-height',$line-height)

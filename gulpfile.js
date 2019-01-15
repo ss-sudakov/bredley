@@ -43,6 +43,8 @@ gulp.task('js', ['common-js'], function() {
 		'node_modules/jquery-validation/dist/additional-methods.min.js',
 		'node_modules/remodal/dist/remodal.min.js',
 		'node_modules/slick-carousel/slick/slick.min.js',
+		'app/libs/numberAnimate/jquery.animateNumber.min.js',
+		'app/libs/wow/wow.js',
 		'app/js/common.min.js', // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))

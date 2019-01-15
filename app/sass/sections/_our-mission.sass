@@ -1,0 +1,36 @@
+.our-mission
+ 
+	&__inner
+		$padding-top: (750: 123px, 1000: 70px, 1600: 102px)
+		$padding-bottom: (750: 100px, 1000: 59px, 1600: 80px)
+		
+		
+		text-align: center
+		@include set-fluid('padding-top', $padding-top)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		.def-title
+			$padding-bottom: (750: 60px, 1000: 30px, 1600: 35px)
+			
+			@include set-fluid('padding-bottom', $padding-bottom)
+
+			text-align: center
+			h1,h2,h3,h4,h5,h6
+				$font-size: (750: 33px, 1000: 25px, 1600: 32px)
+				$line-height: (750: 44px, 1000: 30px, 1600: 44px)
+				
+				@include set-fluid('font-size',$font-size)
+				@include set-fluid('line-height',$line-height)
+	&__content
+		
+		text-align: center
+		width: 100% 
+		margin: 0 auto
+		@include media(xl)
+			$max-width: (1000: 508px, 1600: 708px)
+			@include set-fluid('max-width', $max-width) 
+		p
+			$padding-bottom: (750: 43px, 1000: 35px, 1600: 30px)
+			
+			@include set-fluid('padding-bottom', $padding-bottom)
+
+

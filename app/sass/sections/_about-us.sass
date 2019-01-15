@@ -1,0 +1,42 @@
+.about-us
+	&__inner
+		$padding-bottom: (750: 28px, 1000: 37px, 1600: 57px)
+		$padding-top: (750: 18px, 1000: 37px, 1600: 57px)
+		
+		@include set-fluid('padding-bottom', $padding-bottom)
+		@include set-fluid('padding-top', $padding-top)
+		.def-title
+			
+			$padding-bottom: (750: 78px, 1000: 37px, 1600: 57px)
+			@include set-fluid('padding-bottom', $padding-bottom)
+			
+			width: 100% 
+			
+			@include media(xl)
+				$max-width: (1000: 356px, 1600: 606px)
+				@include set-fluid('max-width', $max-width)
+				
+			h1,h2,h3
+				$font-size: (750: 33px, 1000: 29px, 1600: 32px)
+				$line-height: (750: 50px, 1000: 40px, 1600: 44px)
+				
+				@include set-fluid('font-size', $font-size)
+				@include set-fluid('line-height', $line-height)
+				
+				line-height: 1
+
+
+
+	&__top
+		@include media(xl)
+			display: flex
+		p
+			$padding-bottom: (750: 43px, 1000: 24px, 1600: 30px)
+			@include set-fluid('padding-bottom', $padding-bottom)
+	&__right
+		@include media(xl)
+			$margin-left: (1000: 23px, 1600: 23px)
+			@include set-fluid('margin-left', $margin-left)
+
+
+		

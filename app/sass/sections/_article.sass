@@ -1,0 +1,104 @@
+.article
+	$padding-top: (750: 50px, 1000: 79px, 1600: 57px)
+	$padding-bottom: (750: 0px, 1000: 7px, 1600: 7px)
+
+	@include set-fluid('padding-top', $padding-top)
+	@include set-fluid('padding-bottom', $padding-bottom)
+	&__inner
+		$padding-bottom: (750: 60px, 1000: 17px, 1600: 37px)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		@include media(xl)
+			display: flex 
+	.wrapper
+		$padding-right: (320: 20px, 750px: 50px, 1000px: 80px, 1600px: 129px)
+		@include poly-fluid-sizing('padding-right', $padding-right)
+	&__top
+		width: 100% 
+		@include media(xl)
+			$max-width: (1600: 840px)
+			@include set-fluid('max-width', $max-width) 
+		.def-title
+			$padding-bottom: (750: 68px, 1000: 40px)
+			
+			@include set-fluid('padding-bottom', $padding-bottom)
+			@include media(xl)
+				padding-bottom: 0
+				
+			h1, h2, h3
+				$font-size: (750: 33px, 1000: 25px, 1600: 32px)
+				$line-height: (750: 41.69px, 1000: 29px, 1600: 41px)
+				
+				@include set-fluid('font-size',$font-size)
+				@include set-fluid('line-height',$line-height)
+	&__date
+		$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+		$line-height: (750: 32.66px, 1000: 20px, 1600: 20px)
+		
+		$padding-bottom: (750: 31px, 1000: 15px, 1600: 50px)
+
+		@include set-fluid('padding-bottom', $padding-bottom)
+		
+		@include set-fluid('font-size',$font-size)
+		@include set-fluid('line-height',$line-height)
+		color: $date-time
+		display: none
+		@include media(xl)
+			display: inline-block
+		&--mobile
+			$padding-top: (750: 31px, 1000: 21px)
+			@include set-fluid('padding-top', $padding-top)
+			display: inline-block
+			@include media(xl)
+				display: none
+
+	&__content
+		width: 100% 
+		@include media(xl)
+			$max-width: (1600: 840px)
+			@include set-fluid('max-width', $max-width)
+	&__bottom
+		img
+			$padding-bottom: (750: 41px, 1000: 25px, 1600: 41px)
+
+			@include set-fluid('padding-bottom', $padding-bottom)
+			
+			@include respimg
+		p
+			$padding-bottom: (750: 62px, 1000: 20px, 1600: 27px)
+
+			@include set-fluid('padding-bottom', $padding-bottom)
+
+
+	&__thumbnail
+		width: 100% 
+		img
+			@include respimg
+		&--mobile
+			$padding-bottom: (750: 31px, 1000: 21px)
+
+			@include set-fluid('padding-bottom', $padding-bottom)
+			display: block
+			@include media(xl)
+				display: none
+				
+	&__sidebar
+		display: none
+		@include media(xl)
+			$max-width: (1600: 326px)
+			@include set-fluid('max-width', $max-width)
+			display: block
+			margin-left: auto
+		.articles
+			&__list
+				display: block
+			&__thumbnail
+				$padding-bottom: (750: 60px, 1000: 27px, 1600: 32px)
+
+				@include set-fluid('padding-bottom', $padding-bottom)
+			&__date
+				$line-height: (750: 32.66px, 1000: 15px, 1600: 20px)
+
+				@include set-fluid('line-height',$line-height)
+			&__title
+				$padding-bottom: (750: 68px, 1000: 20px, 1600: 27px)
+				@include set-fluid('padding-bottom', $padding-bottom)

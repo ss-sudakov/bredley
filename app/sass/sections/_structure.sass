@@ -1,0 +1,357 @@
+$mockup-width-sm: 750
+$mockup-width-md: 1000
+$mockup-width-lg: 1600
+
+$dark-blue: #313366
+
+$def-transition: 0.3s ease-in-out
+
+@mixin title-mono($fz, $color: $dark-blue)
+  font-size: $fz
+  font-family: $second-font
+  font-weight: 700
+  color: $color
+  line-height: 1
+
+@mixin title-lato($fz, $color: $text)
+  font-size: $fz
+  font-family: $default-font
+  font-weight: 400
+  color: $color
+  line-height: 1
+
+@mixin breakpoint-tablet
+  @media screen and (min-width: #{$mockup-width-sm}px)
+    @content
+
+@mixin breakpoint-landscape
+  @media screen and (min-width: #{$mockup-width-md}px)
+    @content
+
+@mixin breakpoint-desktop
+  @media screen and (min-width: #{$mockup-width-lg}px)
+    @content
+
+@mixin no-list
+  list-style: none
+  padding: 0
+  margin: 0
+
+@mixin on-event
+  &:hover,
+  &:focus
+    @content
+
+@mixin event-opacity
+  opacity: 1
+  will-change: opacity
+  transition: opacity $def-transition
+
+  @include on-event
+    opacity: 0.7
+
+.page-wrapper
+  $margin: ($mockup-width-sm: 50px, $mockup-width-lg: 95px)
+  @include set-fluid('margin-left', $margin)
+  @include set-fluid('margin-right', $margin)
+
+.structure
+  &-inner
+    $padding: ($mockup-width-sm: 0px, $mockup-width-lg: 90px)
+    @include set-fluid('padding-left', $padding)
+    @include set-fluid('padding-right', $padding)
+
+  &-panel
+    $padding-top: ($mockup-width-sm: 50px, $mockup-width-md: 50px, $mockup-width-lg: 50px)
+    @include set-fluid('padding-top', $padding-top)
+    $padding-bottom: ($mockup-width-sm: 50px, $mockup-width-md: 50px, $mockup-width-lg: 50px)
+    @include set-fluid('padding-bottom', $padding-bottom)
+
+  &-header
+    background: $dark-blue
+    text-align: center
+    $padding-top: ($mockup-width-sm: 15px, $mockup-width-md: 16px, $mockup-width-lg: 10px)
+    @include set-fluid('padding-top', $padding-top)
+    $padding-bottom: ($mockup-width-sm: 20px, $mockup-width-md: 16px, $mockup-width-lg: 14px)
+    @include set-fluid('padding-top', $padding-top)
+    @include set-fluid('padding-bottom', $padding-bottom)
+    $margin: ($mockup-width-sm: 35px, $mockup-width-md: 35px, $mockup-width-lg: 30px)
+    @include set-fluid('margin-bottom', $margin)
+
+    &-title
+      @include title-mono(20px, rgba($def-color, 0.8))
+      line-height: 1.35
+      $font: ($mockup-width-sm: 32px, $mockup-width-lg: 32px)
+      @include set-fluid('font-size', $font)
+
+      @include breakpoint-tablet
+        color: $def-color
+
+  &-body
+    border-bottom: 1px solid $accent
+    display: flex
+    flex-wrap: wrap
+
+    &-column
+      width: 100%
+      $padding-bottom: ($mockup-width-sm: 37px, $mockup-width-lg: 30px)
+      @include set-fluid('padding-bottom', $padding-bottom)
+
+      &--large
+        @include breakpoint-landscape
+          width: 50%
+
+        @include breakpoint-desktop
+          width: 60%
+
+        .structure-item
+          @include breakpoint-desktop
+            width: 33.33%
+
+      &--small
+        $padding-top: ($mockup-width-sm: 55px, $mockup-width-md: 25px, $mockup-width-lg: 30px)
+        @include set-fluid('padding-top', $padding-top)
+
+        @include breakpoint-landscape
+          width: 50%
+          padding-top: 0
+
+        @include breakpoint-desktop
+          width: 40%
+
+        .structure-item
+          @include breakpoint-desktop
+            width: 50%
+
+      & + .structure-body-column
+        border-top: 1px solid $accent
+        border-left: 1px solid transparent
+
+        @include breakpoint-landscape
+          border-top: 1px solid transparent
+          border-left: 1px solid $accent
+
+
+  &-title
+    @include title-mono(33px)
+    $fz: ($mockup-width-sm: 33px, $mockup-width-md: 24px, $mockup-width-lg: 24px)
+    @include set-fluid('font-size', $fz)
+    $margin-top: ($mockup-width-sm: 45px, $mockup-width-md: 25px, $mockup-width-lg: 30px)
+    @include set-fluid('margin-top', $margin-top)
+    $margin-bottom: ($mockup-width-sm: 25px, $mockup-width-md: 10px, $mockup-width-lg: 12px)
+    @include set-fluid('margin-bottom', $margin-bottom)
+    text-align: center
+
+
+  &-subtitle
+    @include title-lato(24px)
+    $fz: ($mockup-width-sm: 24px, $mockup-width-md: 16px, $mockup-width-lg: 18px)
+    @include set-fluid('font-size', $fz)
+    $lh: ($mockup-width-sm: 25px, $mockup-width-lg: 25px)
+    @include set-fluid('line-height', $lh)
+    text-align: center
+    $margin-bottom: ($mockup-width-sm: 65px, $mockup-width-md: 30px, $mockup-width-lg: 13px)
+    @include set-fluid('margin-bottom', $margin-bottom)
+
+  &-items
+    @include no-list
+    display: none
+
+    @include breakpoint-landscape
+      display: flex
+      flex-wrap: wrap
+
+
+  &-item
+    width: 50%
+    text-align: center
+    padding: 0 10px
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    outline: none
+
+    $margin-bottom: ($mockup-width-sm: 90px, $mockup-width-md: 30px, $mockup-width-lg: 40px)
+    @include set-fluid('margin-bottom', $margin-bottom)
+    $margin-top: ($mockup-width-sm: 25px, $mockup-width-lg: 30px)
+    @include set-fluid('margin-top', $margin-top)
+    
+    &-image
+      font-size: 0
+      $padding: ($mockup-width-sm: 25px, $mockup-width-md: 5px, $mockup-width-lg: 10px)
+      @include set-fluid('padding-top', $padding)
+      $padding: ($mockup-width-sm: 25px, $mockup-width-md: 5px, $mockup-width-lg: 10px)
+      @include set-fluid('padding-bottom', $padding)
+      $margin: ($mockup-width-sm: 18px, $mockup-width-md: 10px, $mockup-width-lg: 5px)
+      @include set-fluid('margin-bottom', $margin)
+      min-height: 75px
+      display: flex
+      align-items: flex-end
+      justify-content: center
+      outline: none
+
+      img
+        $max-width: ($mockup-width-sm: 241px, $mockup-width-md: 109px, $mockup-width-lg: 109px)
+        @include set-fluid('max-width', $max-width) 
+        object-fit: contain
+        @include event-opacity
+
+    &-title
+      margin: 0
+      padding: 0
+      font-size: 0
+      a
+        @include title-mono(20px)
+        display: inline-block
+        $fz: ($mockup-width-sm: 33px, $mockup-width-md: 20px, $mockup-width-lg: 20px)
+        @include set-fluid('font-size', $fz)
+        $padding-top: ($mockup-width-sm: 20px, $mockup-width-md: 10px, $mockup-width-lg: 10px)
+        @include set-fluid('padding-top', $padding-top)
+        $padding-bottom: ($mockup-width-sm: 15px, $mockup-width-md: 10px, $mockup-width-lg: 10px)
+        @include set-fluid('padding-bottom', $padding-bottom)
+        text-decoration: none
+        @include event-opacity
+        outline: none
+
+    &-link
+      @include title-lato(18px)
+      $fz: ($mockup-width-sm: 25px, $mockup-width-md: 18px, $mockup-width-lg: 18px)
+      @include set-fluid('font-size', $fz)
+      text-decoration: none
+      display: inline-block
+      @include event-opacity
+      outline: none
+
+  &-slider
+    &-container
+      display: block
+      $margin: ($mockup-width-sm: 48px, $mockup-width-md: 20px)
+      @include set-fluid('margin-bottom', $margin)
+
+      @include breakpoint-landscape
+        display: none
+
+    &-nav
+      @include title-mono(27px, rgba($title, 0.5))
+      $fz: ($mockup-width-sm: 27px, $mockup-width-md: 27px, $mockup-width-lg: 27px)
+      @include set-fluid('font-size', $fz)
+      font-weight: 400
+      display: flex
+      justify-content: center
+
+      .counter
+        $padding-vertical: ($mockup-width-md: 26px, $mockup-width-lg: 22px)
+        @include set-fluid('padding-top', $padding-vertical)
+        @include set-fluid('padding-bottom', $padding-vertical)
+        $padding-horizontal: ($mockup-width-md: 55px, $mockup-width-lg: 35px)
+        @include set-fluid('padding-left', $padding-horizontal)
+        @include set-fluid('padding-right', $padding-horizontal)
+        border-radius: 10px
+        background: rgba($dark-blue, 0.05)
+
+        .current:after
+            margin: 0 15px
+      .prev 
+        background-image: url('/img/structure/arrow_reverse.svg')
+      .next
+        background-image: url('/img/structure/arrow.svg')
+      .next, .prev
+        filter: brightness(100%)
+        will-change: filter
+        transition: all $def-transition
+        opacity: 1
+
+        @include on-event
+          filter: brightness(70%)
+
+        &.hide
+          opacity: 0
+          pointer-events: none
+
+      .prev
+        $margin-hr: (750: 77px, 1600: 46px)
+        @include set-fluid('margin-right', $margin-hr)
+
+      .next
+        $margin-hr: (750: 77px, 1600: 46px)
+        @include set-fluid('margin-left', $margin-hr)
+
+  &-redline
+    text-align: center
+    $padding-top: ($mockup-width-sm: 57px, $mockup-width-md: 40px, $mockup-width-lg: 28px)
+    @include set-fluid('padding-top', $padding-top)
+    $padding-bottom: ($mockup-width-sm: 162px, $mockup-width-md: 80px, $mockup-width-lg: 132px)
+    @include set-fluid('padding-bottom', $padding-bottom)
+    $padding-left: ($mockup-width-sm: 0px, $mockup-width-md: 20px, $mockup-width-lg: 40px)
+    @include set-fluid('padding-left', $padding-left)
+    
+    @include breakpoint-landscape
+      display: flex
+      align-items: center
+      text-align: left
+
+    &-image
+      font-size: 0
+      display: block
+      $margin-bottom: ($mockup-width-sm: 25px, $mockup-width-md: 30px)
+      @include set-fluid('margin-bottom', $margin-bottom)
+
+      @include breakpoint-landscape
+        $margin-right: ($mockup-width-sm: 20px, $mockup-width-lg: 30px)
+        @include set-fluid('margin-right', $margin-right)
+        margin-bottom: 0
+
+      img
+        max-width: 100%
+        $width: ($mockup-width-sm: 210px, $mockup-width-lg: 151px)
+        @include set-fluid('max-width', $width)
+
+    &-titles
+      @include breakpoint-landscape
+        padding-top: 15px
+
+    &-title
+      @include title-mono(24px)
+      $fz: ($mockup-width-sm: 33px, $mockup-width-md: 24px, $mockup-width-lg: 24px)
+      @include set-fluid('font-size', $fz)
+      $margin-bottom: ($mockup-width-sm: 15px, $mockup-width-md: 15px, $mockup-width-lg: 15px)
+      @include set-fluid('margin-bottom', $margin-bottom)
+
+    &-subtitle
+      @include title-lato(25px)
+      $fz: ($mockup-width-sm: 24px, $mockup-width-md: 16px, $mockup-width-lg: 18px)
+      @include set-fluid('font-size', $fz)
+
+
+
+.back
+  display: flex
+  align-items: center
+
+  $padding-top: ($mockup-width-sm: 70px, $mockup-width-md: 70px, $mockup-width-lg: 70px)
+  @include set-fluid('padding-top', $padding-top)
+  $padding-bottom: ($mockup-width-sm: 73px, $mockup-width-md: 35px, $mockup-width-lg: 0px)
+  @include set-fluid('padding-bottom', $padding-bottom)
+
+  &-arrow
+    font-size: 0
+    display: inline-block
+    width: 15px
+    height: 15px
+    $size: ($mockup-width-sm: 26px, $mockup-width-md: 20px, $mockup-width-lg: 15px)
+    @include set-fluid('width', $size)
+    @include set-fluid('height', $size)
+    transform: scale(-1, 1)
+
+    img
+      width: 100%
+      height: 100%
+
+  &-text
+    $margin: ($mockup-width-sm: 58px, $mockup-width-md: 10px, $mockup-width-lg: 70px)
+    @include set-fluid('margin-left', $margin)
+    @include title-mono(25px)
+    $fz: ($mockup-width-sm: 25px, $mockup-width-md: 16px, $mockup-width-lg: 16px)
+    @include set-fluid('font-size', $fz)
+    color: $text
+    text-decoration: none

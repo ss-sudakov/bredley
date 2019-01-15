@@ -1,0 +1,267 @@
+.footer
+	$a: &
+	
+	background: url(/img/index/bg-footer.png) 
+	background-size: cover
+	background-position: center
+	position: relative
+	z-index: 1
+	&:after
+		z-index: 2
+		content: ""
+		display: block 
+		position: absolute
+		background-color: rgba(50,143,189, 0.8) 
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		
+	&__inner
+		$padding-top: (750: 116px, 800: 70px, 1000: 44px, 1600: 64px)
+		$padding-bottom: (750: 69px, 800: 30px,1000: 47px, 1600: 67px)
+	
+		@include set-fluid('padding-top', $padding-top)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		
+		z-index: 3
+		position: relative
+		width: 100% 
+		margin: 0 auto
+		@include media(m)
+			width: 70% 
+		@include media(xl)
+			width: 100%
+			display: flex
+			justify-content: space-between 
+			flex-wrap: wrap
+	&__left, &__right
+		@include media(xl)
+			display: flex
+			justify-content: space-between
+	&__left
+		#{$a}__col
+			&:nth-child(1)
+				@include media(xl)
+					$padding-right: (1000: 32px, 1600: 112px)
+					
+					@include set-fluid('padding-right', $padding-right)
+	&__right
+			
+	&__col
+		@include media(xl)
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+	&__logo
+		filter: brightness(100)
+		display: none
+		@include media(xl)
+			display: block
+
+
+	&__youx
+		$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+		@include set-fluid('font-size',$font-size)
+
+		color: $copyright
+		line-height: 1 
+		a
+			$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+	
+			@include set-fluid('font-size',$font-size)
+
+			color: $copyright
+			line-height: 1 
+			text-decoration: none
+			display: inline-flex
+			align-items: center
+			span
+				$padding-right: (1000: 17px, 1600: 17px)
+				@include set-fluid('padding-right', $padding-right)
+				
+				display: inline-block
+				opacity: .3  
+		img
+			$max-width: (1000: 72px, 1600: 72px)
+			@include set-fluid('max-width', $max-width)
+			@include respimg
+		.design-by
+			display: none
+			@include media(xl)
+				display: block
+			
+	.def-title
+		$padding-bottom: (750: 116px, 800: 70px)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		
+		color: $def-color
+		text-align: center
+		@include media(xl)
+			text-align: left
+			padding-bottom: 0
+		h1,h2,h3
+			$font-size: (750: 42px, 1000: 25px, 1600: 34px)
+
+			@include set-fluid('font-size',$font-size)
+			
+			line-height: 1 
+	&__form
+		// margin: 0 auto
+		width: 100% 
+		@include media(xl)
+			$max-width: (1000: 370px, 1600: 470px)
+			$margin-right: (1000: 0px, 1600: 89px)
+
+			@include set-fluid('max-width', $max-width)
+			@include set-fluid('margin-right', $margin-right)
+			
+
+			display: flex
+			justify-content: space-between 
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+			$margin-bottom: (750: 23px, 1000: 10px, 1600: 10px)
+				
+			@include set-fluid('margin-bottom', $margin-bottom)
+			&:last-child
+				@include media(xl)
+					margin-bottom: 0 
+			
+		textarea
+			$height: (750: 160px, 1000: 90px, 1600: 90px)
+				
+			@include set-fluid('height', $height)
+			
+			@include media(xl)
+			float: left
+			resize: none
+			overflow-y: auto 
+		.def-btn
+			$margin-top: (750: 23px, 1000: 10px, 1600: 10px)
+				
+			@include set-fluid('margin-top', $margin-top)
+			width: 100% 
+		.col__left
+			@include media(xl)
+				width: 50%
+				$padding-right: (1000: 10px, 1600: 10px)
+				
+				@include set-fluid('padding-right', $padding-right)
+		.col__right
+			@include media(xl)
+				width: 50% 
+	
+	&__contacts, &__copyright, &__socials, &__youx
+		display: none
+		@include media(xl)
+			display: block
+
+	&__contacts
+		$font-size: (750: 42px, 1000: 14px, 1600: 14px)
+		
+		@include set-fluid('font-size',$font-size)
+
+		color: $def-color
+		line-height: 1
+		@include media(xl) 
+			$margin-bottom: (1000: 40px, 1600: 40px)
+			
+			
+			@include set-fluid('margin-bottom', $margin-bottom)
+		a
+			
+			display: inline-block
+			$font-size: (750: 42px, 1000: 14px, 1600: 14px)
+		
+			@include set-fluid('font-size',$font-size)
+
+			color: $def-color
+			text-decoration: none
+			line-height: 1 
+			transition: ease-in-out .3s
+			border-bottom: 1px solid transparent
+			@include media(xl)
+				$margin-right: (1000: 10px, 1600: 20px)
+			
+				@include set-fluid('margin-right', $margin-right)
+				&:last-child
+					margin-right: 0
+				
+			&:hover
+				border-bottom: 1px solid $def-color
+	&__copyright
+		$font-size: (750: 25px, 1000: 12px, 1600: 12px)
+		
+		@include set-fluid('font-size',$font-size)
+
+		color: $copyright
+		opacity: .3
+		line-height: 1 
+	&__socials
+		@include media(xl)
+			display: flex
+			align-items: center
+		ul
+			@include zmp
+			list-style-type: none
+			li
+				$margin-right: (750: 25px,  1000: 5px, 1600: 5px)
+			
+				@include set-fluid('margin-right', $margin-right)
+				
+				display: inline-block
+				transition: opacity .3s ease-in-out
+				@include media(xl)
+					opacity: .5
+				&:hover
+					opacity: 1
+				a
+					display: block
+					$size: (750: 50px, 1000: 23px, 1600: 23px)
+					
+					@include set-fluid('width',$size)
+					@include set-fluid('height',$size)
+				img
+					@include respimg
+	&__bottom
+		@include media(xl)
+			display: none
+		#{$a}__contacts, #{$a}__copyright, #{$a}__socials, #{$a}__youx
+			display: block
+			text-align: center
+		#{$a}__contacts
+			$padding-top: (750: 147px, 800: 70px)
+
+			@include set-fluid('padding-top', $padding-top)
+
+			a
+				$padding-bottom: (750: 24px)
+
+				@include set-fluid('padding-bottom', $padding-bottom)
+
+				&:last-child
+					padding-bottom: 0 
+		#{$a}__socials
+			$padding-top: (750: 85px, 800: 60px)
+			
+			@include set-fluid('padding-top', $padding-top)
+
+		#{$a}__youx
+			$padding-top: (750: 103px, 800: 70px)
+			$max-width: (750: 173px)
+			
+			@include set-fluid('padding-top', $padding-top)
+			@include set-fluid('max-width', $max-width)
+
+			width: 100% 
+			margin: 0 auto
+			opacity: 1
+			img
+				@include respimg
+		#{$a}__copyright
+			$padding-top: (750: 47px, 800: 20px)
+			@include set-fluid('padding-top', $padding-top)
+
+

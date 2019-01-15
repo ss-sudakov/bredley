@@ -9,6 +9,8 @@
 	display: block
 	border: 1px $def-color solid 
 	border-radius: 50% 
+	transform: translateX(0)
+	transition:  background .3s ease-in-out, transform .3s ease-in-out
 	&:before
 		$size: (750: 24px, 1600: 16px)
 		
@@ -21,10 +23,39 @@
 		background-size: cover 
 		background-repeat: no-repeat
 		position: relative
-		
-.slider__nav
-	$font-size: (750: 27px, 1600: 16px)
-	$line-height: (750: 46.9px, 1600: 28px)
+.scroll-top
+	$right: (320: 20px, 750: 50px, 1000: 70px, 1600: 100px)
+	$bottom: (750: 69px, 800: 30px, 1000: 47px, 1600: 67px)
+	
+	@include set-fluid('right', $right)
+	@include set-fluid('bottom', $bottom)
+	
+	z-index: 3 
+	position: relative
+	position: fixed
+	@extend .wrapper
+	@extend .more_arrow
+	border: 1px $def-color solid
+	background: $accent 
+	opacity: 0
+	transition: opacity .5s ease-in-out
+	&:before
+		transform: rotate(-90deg) translateY(-10%)
+		@include media(xl)
+			transform: rotate(-90deg) translateY(0)
+%more_arrow_hover_invert
+	&:hover
+		background-color: $def-color
+	&:hover:before
+		background-image: url(/img/elements/arrow_blue_reverse.svg) 
+
+%more_arrow_hover_slide 
+	&:hover:before
+		transform: translateX(30%)
+	
+.slider__nav, .pagination
+	$font-size: (750: 27px, 1000: 16px, 1600: 16px)
+	$line-height: (750: 46.9px, 1000: 40px, 1600: 40px)
 	
 	
 	@include set-fluid('font-size', $font-size)
@@ -34,11 +65,12 @@
 	font-family: $second-font
 	font-weight: 400
 	width: 100%  
-	display: inline-flex
-	align-items: center  
+	display: flex
+	align-items: center 
+	justify-content: space-between
 	color: $def-color
 	.counter
-		$padding-hr: (750: 45px, 1600: 26.5px)
+		$padding-hr: (750: 45px, 1000: 26.5px, 1600: 26.5px)
 		
 		@include set-fluid('padding-right', $padding-hr)
 		@include set-fluid('padding-left', $padding-hr)
@@ -50,22 +82,24 @@
 			&:after
 				content: " / " 
 				display: inline-block
-				margin: 0 4px 0 4px
+				margin: 0 7px 0 7px
 	.prev
 		$size: (750: 25px, 1600: 15px)
 		$margin-hr: (750: 71px, 1600: 46px)
 
 		@include set-fluid('width', $size)
 		@include set-fluid('height', $size)
+
 		@include set-fluid('margin-right', $margin-hr)
 
-		background-image: url(/img/elements/arrow.svg)
+		background-image: url(/img/elements/arrow_reverse.svg)
 		background-repeat: no-repeat
 		background-size: cover
-		transform: scale(-1,1)
 		cursor: pointer
-
-		
+		transition: transform .3s ease-in-out
+		transform: translateX(0)
+		&:hover
+			transform: translateX(-30%)
 	.next
 		$size: (750: 25px, 1600: 15px)
 		$margin-hr: (750: 71px, 1600: 46px)
@@ -78,5 +112,156 @@
 		background-repeat: no-repeat
 		background-size: cover
 		cursor: pointer
+		transition:  transform .3s ease-in-out
+		&:hover
+			transform: translateX(30%)
+	&--circle
+		width: auto
+		.prev
+			&:after
+				background-image: url(/img/elements/arrow_blue.svg)
+			&:hover:after
+				background-image: url(/img/elements/arrow_reverse.svg)
+		.next
+			&:after
+				background-image: url(/img/elements/arrow_blue_reverse.svg)
+			&:hover:after
+				background-image: url(/img/elements/arrow.svg)
+		.prev,.next
+			$size: (750: 82px, 1000: 40px, 1600: 50px)
+			$padding: (750: 30px, 1000: 13px, 1600: 17px)
+			
+			@include set-fluid('width', $size)
+			@include set-fluid('height', $size)
+			@include set-fluid('padding', $padding)
 
+			@include set-fluid('padding', $padding)
+			background: none 
+			border: 1px $accent solid 
+			border-radius: 50%   
+			transition:  all .3s ease-in-out
+			&:after
+				$size: (750: 25px, 1000: 12px, 1600: 15px) 
+
+				@include set-fluid('width', $size)
+				@include set-fluid('height', $size)
+				
+				content: ""	
+				display: block
+				position: relative
+				background-size: cover 
+				background-repeat: no-repeat
+				background-position: center
+			&:hover
+				background-color: $accent
+
+.pagination
+	$line-height: (750: 75px, 1000: 60px, 1600: 40px)
+	
+	@include set-fluid('line-height',$line-height)
+	
+	color: $title
+	.current,.total
+		opacity: 0.5 
+	.counter
+		background-color: rgba(46,46,83, 0.05)
+		.current
+			&:after
+				margin: 0 14px 0 14px
+	.prev
+		background-image: url(/img/elements/arrow_pagination_reverse.svg)
+	.next
+		background-image: url(/img/elements/arrow_pagination.svg)
+	.prev, .next
+		opacity: 0.5 
 		
+				
+
+.def-btn
+	$font-size: (750: 25px, 1000: 14px, 1600: 14px)
+	$padding-top: (750: 31px, 1000: 12px, 1600: 12px)
+	$padding-bottom: (750: 31px, 1000: 15px, 1600: 15px)
+	$height: (750: 80px, 1000: 40px, 1600: 40px)
+	
+	@include set-fluid('font-size',$font-size)
+	@include set-fluid('padding-top', $padding-top)
+	@include set-fluid('padding-bottom', $padding-bottom)
+	@include set-fluid('height', $height)
+	
+	border: none
+	background-color: $btn-form 
+	color: $def-color
+	line-height: 1
+	border-radius: 5px 
+	width: 100% 
+	cursor: pointer
+	
+		
+.btn-link
+	$font-size: (750: 25px, 1000: 13px, 1600: 16px)
+	$line-height: (750: 25px, 1000: 13px, 1600: 16px)
+	
+	$padding-hr: (750: 80px, 1000: 23px, 1600: 28px)
+	$padding-vr: (750: 31px, 1000: 6px, 1600: 8px)
+	
+	@include set-fluid('font-size',$font-size)
+	@include set-fluid('line-height',$line-height)
+	@include set-fluid('padding-top', $padding-vr)
+	@include set-fluid('padding-right', $padding-hr)
+	@include set-fluid('padding-bottom', $padding-vr)
+	@include set-fluid('padding-left', $padding-hr)
+	
+	color: $btn-txt
+	background-color: $btn-link
+	text-decoration: none
+	border-radius: 3px 
+	transition: all .3s ease-in-out
+	&:hover
+		color: $def-color
+		background-color: $accent
+.bg-lines
+	@include media(xl)
+		background: linear-gradient(90deg, #f5f5f5 1px, transparent 1px)
+		background-size: get-vw(1600, 353px)
+		border-right: 1px solid #f5f5f5 
+		background-position: 7.6% 
+.back
+	$padding-top: (320: 25px,750: 69px, 1000: 37px, 1600: 64px)
+	$padding-bottom: (320: 20px,750: 124px, 1000: 37px, 1600: 62px)
+	@include set-fluid('padding-top', $padding-top)
+	@include set-fluid('padding-bottom', $padding-bottom)
+	&__arrow
+		$size: (750: 26px, 1000: 11px, 1600: 15px)
+		$margin-right: (750: 32px, 1600: 65px)
+		$top: (320: 2px, 750px: 3px, 1000px: 8px, 1600px: 8px)
+		$left: (320: 20px, 750px: 50px, 1000px: 65px, 1600px: 95px)
+		
+		
+		@include set-fluid('width', $size)
+		@include set-fluid('height', $size)
+
+		display: inline-block
+		background-image: url(/img/elements/arrow_back.svg)
+		background-repeat: no-repeat
+		background-size: cover 
+		position: absolute
+		
+		@include poly-fluid-sizing('left', $left)
+		@include poly-fluid-sizing('top', $top)
+		background-position: center
+	&__btn
+		$margin-left: (750: 85px, 1000: 55px)
+		
+		@include set-fluid('margin-left', $margin-left)
+
+		display: inline-block
+		@include media(xl)
+			margin-left: 0
+	&__inner
+		a
+			$font-size: (750: 25px, 1000: 14px, 1600: 16px)
+			@include set-fluid('font-size',$font-size)
+			
+			color: $menu-dis
+			text-decoration: none
+			line-height: 1 

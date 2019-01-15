@@ -1,0 +1,144 @@
+.advantages
+	&__inner
+		$padding-top: (750: 132px, 1000: 70px, 1600: 130px)
+		@include set-fluid('padding-top', $padding-top)
+		position: relative
+		@include media(xl)
+			display: flex
+	&__target
+		$padding-top: (750: 80px, 1000: 60px, 1600: 96px)
+		$padding-right: (750: 65px, 1000: 15px, 1600: 85px)
+		$padding-bottom: (750: 46px, 1000: 29px, 1600: 34px)
+		$padding-left: (750: 75px, 1000: 31px, 1600: 36px)
+				
+		color: $def-color
+		background-color: $accent
+		
+		background-repeat: no-repeat 
+		background-size: cover
+		background-position: center
+		
+		@include media(xl)
+			background-image: none !important
+		*
+			color: $def-color
+		.wrapper
+			$padding-right: (750: 50px, 1000: 50px, 1600: 50px)
+			$padding-top: (750: 482px, 1000: 282px)
+			$padding-bottom: (750: 105px, 1000: 75px)
+			
+			@include set-fluid('padding-top', $padding-top)
+			@include set-fluid('padding-bottom', $padding-bottom)
+			
+			
+			display: flex
+			flex-direction: column 
+			justify-content: end 
+			
+			@include media(xl)
+				padding-top: 0
+				padding-bottom: 0  
+				@include set-fluid('padding-right', $padding-right)
+			
+		&--content
+			$padding-top: (750: 80px, 1000: 60px, 1600: 96px)
+			$padding-right: (750: 65px, 1000: 80px, 1600: 80px)
+			$padding-bottom: (750: 70px, 1000: 49px, 1600: 91px)
+			$padding-left: (750: 39px, 1000: 39px, 1600: 0px)
+			
+			
+			@include set-fluid('padding-top', $padding-top)
+			@include set-fluid('padding-right', $padding-right)
+			@include set-fluid('padding-bottom', $padding-bottom)
+			@include set-fluid('padding-left', $padding-left)
+			
+			background-color: $accent
+			padding-right: 0
+			
+			@include media(xl)
+				padding-left: 0
+				
+			
+			
+			.def-title
+				$padding-bottom: (750: 45px, 1000: 29px, 1600: 50px)
+				
+				@include set-fluid('padding-bottom', $padding-bottom)
+				h1,h2,h3
+					letter-spacing: -1px 
+	&__img
+		display: none
+		@include media(xl)
+			display: block
+			img
+				@include respimg
+	&__right
+		$padding-left: (320: 20px, 750: 50px, 1000: 84px, 1600: 96px)
+		$padding-right: (320: 20px, 750: 50px, 1000: 118px, 1600: 218px)
+		$padding-top: (750: 90px, 1000: 60px, 1600: 96px)
+		$padding-bottom: (750: 90px, 1000: 60px, 1600: 96px)
+		$min-width: (1000: 533px, 1600: 733px)
+
+		@include set-fluid('padding-right', $padding-right)
+		@include set-fluid('padding-left', $padding-left)
+		@include set-fluid('padding-top', $padding-top)
+		@include set-fluid('padding-bottom', $padding-bottom)
+		@include set-fluid('min-width', $min-width)
+
+		background-color: $grey-gb
+		
+		.def-title
+			text-align: center
+			$padding-bottom: (750: 97px, 1000: 30px, 1600: 49px)
+			@include set-fluid('padding-bottom', $padding-bottom)
+			@include media(xl)
+				text-align: left
+			h1,h2,h3
+				letter-spacing: 1px 
+				font-weight: 700 
+				@include media(xl)
+					letter-spacing: -1px 
+		
+		&--content
+			$margin-left: (320: 20px, 750: 15px, 1000: 24px, 1600: 44px)
+			@include set-fluid('margin-left', $margin-left)
+
+
+	&__list
+		ul
+			$font-size: (750: 25px, 1000: 14px, 1600: 16px)
+			$line-height: (750: 41.67px, 1000: 20px, 1600: 28px)
+			
+			@include set-fluid('font-size',$font-size)
+			@include set-fluid('line-height',$line-height)
+			@include zmp
+			
+			list-style-type: none
+			color: $btn-txt
+			
+			li
+				$padding-bottom: (750: 115px, 1000: 20px, 1600: 49px)
+				$padding-left: (750: 63px, 1000: 20px, 1600: 38px)
+				
+				@include set-fluid('padding-bottom', $padding-bottom)
+				@include set-fluid('padding-left', $padding-left)
+				
+				position: relative
+				
+				&:last-child
+					padding-bottom: 0 
+				
+				&:before
+					$size: (750: 22px, 1000: 10px, 1600: 10px)
+
+					@include set-fluid('width', $size)
+					@include set-fluid('height', $size)
+
+					content: ""
+					display: inline-block
+					background-image: url(/img/elements/checkmark.svg)  
+					background-size: cover 
+					background-position: center 
+					position: absolute
+					left: 0
+					top: 0.68em 
